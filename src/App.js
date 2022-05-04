@@ -5,7 +5,7 @@ import './components/task.component';
 import './components/task_list.component';
 import './components/add_task.components'
 import { Switch, Route, Link } from "react-router-dom";
-
+import TaskList from './components/task_list.component';
 
 
 class App extends Component {
@@ -13,17 +13,17 @@ class App extends Component {
     return (
       <div>
         <nav className="navbar navbar-expand navbar-dark bg-dark">
-          <Link to={"/task"} className="navbar-brand">
-            TUTORIALES
+          <Link to={"/task/"} className="navbar-brand">
+            Tareas
           </Link>
           <div className="navbar-nav mr-auto">
             <li className="nav-item">
-              <Link to={"/task"} className="nav-link">
+              <Link to={""} className="nav-link">
                 Tareas
               </Link>
             </li>
             <li className="nav-item">
-              <Link to={"/task"} className="nav-link">
+              <Link to={""} className="nav-link">
                 Nueva Tarea
               </Link>
             </li>
@@ -32,9 +32,8 @@ class App extends Component {
 
         <div className="container mt-3">
           <Switch>
-            <Route exact path={["/", "/task"]} component={TaskList} />
-            <Route exact path="/task" component={AddTask} />
-            <Route path="/task/:id" component={Task} />
+          <Route path="http://localhost:9090/api" element={<TaskList/>} />
+
           </Switch>
         </div>
       </div>

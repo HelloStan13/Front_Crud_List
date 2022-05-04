@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 export default class TaskList extends Component {
   constructor(props) {
     super(props);
-
     this.retrieveTask = this.retrieveTask.bind(this);
     this.refreshList = this.refreshList.bind(this);
     this.setActiveTask = this.setActiveTask.bind(this);
