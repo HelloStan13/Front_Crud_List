@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import TaskDataService from "../services/task.service";
 
-export default class Tutorial extends Component {
+export default class Task extends Component {
   constructor(props) {
     super(props);
     this.onChangeName = this.onChangeName.bind(this);
@@ -69,7 +69,7 @@ export default class Tutorial extends Component {
 
     };
 
-    TutorialDataService.update(this.state.currentTask.id, data)
+    TaskDataService.update(this.state.currentTask.id, data)
       .then(response => {
         this.setState(prevState => ({
             currentTask: {
@@ -116,7 +116,7 @@ export default class Tutorial extends Component {
 
     return (
       <div>
-        {currentTutorial ? (
+        {currentTask ? (
           <div className="edit-form">
             <h4>Tutorial</h4>
             <form>
@@ -126,8 +126,8 @@ export default class Tutorial extends Component {
                   type="text"
                   className="form-control"
                   id="title"
-                  value={currentTutorial.title}
-                  onChange={this.onChangeTitle}
+                  value={currentTask.name}
+                  onChange={this.onChangeName}
                 />
               </div>
               <div className="form-group">
@@ -136,38 +136,23 @@ export default class Tutorial extends Component {
                   type="text"
                   className="form-control"
                   id="description"
-                  value={currentTutorial.description}
-                  onChange={this.onChangeDescription}
+                  value={currentTask.responsible}
+                  onChange={this.onChangeResponsible}
                 />
               </div>
 
-              <div className="form-group">
-                <label>
-                  <strong>Estado:</strong>
-                </label>
-                {currentTutorial.published ? "Publicado" : "Pendiente"}
-              </div>
             </form>
 
-            {currentTutorial.published ? (
-              <button
-                className="badge badge-primary mr-2"
-                onClick={() => this.updatePublished(false)}
-              >
-                No-Publicado
-              </button>
-            ) : (
               <button
                 className="badge badge-primary mr-2"
                 onClick={() => this.updatePublished(true)}
               >
                 Publicado
               </button>
-            )}
 
             <button
               className="badge badge-danger mr-2"
-              onClick={this.deleteTutorial}
+              onClick={this.deleteTask}
             >
               Borrar
             </button>
@@ -175,7 +160,7 @@ export default class Tutorial extends Component {
             <button
               type="submit"
               className="badge badge-success"
-              onClick={this.updateTutorial}
+              onClick={this.updateTask}
             >
               Actualizar
             </button>
