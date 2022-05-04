@@ -1,25 +1,38 @@
-import logo from './logo.svg';
 import './App.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+import React, { Component } from "react";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends Component {
+  render() {
+    return (
+      <div>
+        <nav className="navbar navbar-expand navbar-dark bg-dark">
+          <a href="/api/task" className="navbar-brand">
+            bezKoder
+          </a>
+          <div className="navbar-nav mr-auto">
+            <li className="nav-item">
+              <Link to={"/api/task"} className="nav-link">
+                Task
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to={"/api/task"} className="nav-link">
+                Add Task
+              </Link>
+            </li>
+          </div>
+        </nav>
+        <div className="container mt-3">
+          <Switch>
+            <Route exact path={["/", "/api/task"]} component={TaskList} />
+            <Route exact path="/add" component={AddTask} />
+            <Route path="//api/task/:id" component={Task} />
+          </Switch>
+        </div>
+      </div>
+    );
+  }
 }
-
 export default App;
